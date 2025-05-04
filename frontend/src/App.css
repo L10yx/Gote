@@ -1,0 +1,263 @@
+/* General Styles - Inspired by Apple Notes (Dark Mode) */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #1c1c1e; /* Dark gray background */
+  color: #e0e0e0; /* Light gray text */
+}
+
+.App {
+  max-width: 700px; /* Limit width for better readability */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #2c2c2e; /* Slightly lighter dark gray container */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  text-align: center;
+  color: #e4a83a; /* Keep Yellowish title color */
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+/* Add Memo Form Styles */
+.add-memo-form {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #3a3a3c; /* Darker gray for form */
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between form elements */
+}
+
+.add-memo-form input[type="text"],
+.add-memo-form textarea {
+  padding: 12px 15px;
+  border: 1px solid #555; /* Darker border */
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #48484a; /* Even darker gray input background */
+  color: #e0e0e0; /* Light text */
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.add-memo-form input[type="text"]::placeholder,
+.add-memo-form textarea::placeholder {
+  color: #999; /* Lighter placeholder text */
+}
+
+.add-memo-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.add-memo-form button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #e4a83a; /* Match title color */
+  color: #1c1c1e; /* Dark text for contrast on yellow */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600; /* Slightly bolder */
+  transition: background-color 0.2s ease;
+  align-self: flex-end; /* Align button to the right */
+}
+
+.add-memo-form button[type="submit"]:hover {
+  background-color: #d1982e;
+}
+
+/* Memo List Styles */
+.memo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block; /* Ensure block layout for vertical stacking */
+}
+
+.memo-item {
+  background-color: #3a3a3c; /* Dark background for items */
+  border: 1px solid #4a4a4e; /* Darker border */
+  border-radius: 6px;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  position: relative; /* Needed for absolute positioning of actions */
+  overflow: hidden; /* Hide overflowing content */
+  display: block; /* Ensure list items are block-level */
+  clear: both; /* Prevent interference from floated elements */
+}
+
+.memo-item:hover {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  background-color: #48484a; /* Slightly lighter on hover */
+}
+
+.memo-item h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f0f0f0; /* Lighter title color */
+  cursor: grab; /* Ensure grab cursor is visible */
+}
+
+.memo-item p {
+  color: #c0c0c0; /* Slightly dimmer text for content */
+  font-size: 0.95rem;
+  line-height: 1.5;
+  white-space: pre-wrap; /* Ensure line breaks are preserved */
+  text-align: left; /* Override general p rule */
+}
+
+.memo-item small {
+  display: block;
+  color: #888;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+/* Edit Form Styles (Inline) */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-form input[type="text"],
+.edit-form textarea {
+  padding: 10px 12px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #555;
+  color: #e0e0e0;
+}
+
+.edit-form textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* Action Buttons (Edit, Delete, Save, Cancel) */
+.memo-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.2s ease;
+}
+
+.memo-item:hover .memo-actions,
+.memo-item:focus-within .memo-actions { /* Show on hover or when child has focus */
+  opacity: 1;
+}
+
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.edit-button {
+  background-color: #555;
+  color: #e0e0e0;
+}
+.edit-button:hover {
+  background-color: #666;
+}
+
+.delete-button {
+  background-color: #7d2a2a; /* Darker red */
+  color: #fccaca;
+}
+.delete-button:hover {
+  background-color: #a02020;
+  color: #fddddd;
+}
+
+.save-button {
+  background-color: #2a6b47; /* Darker green */
+  color: #c6f6d5;
+}
+.save-button:hover {
+  background-color: #388e3c;
+  color: #e0ffe0;
+}
+
+.cancel-button {
+  background-color: #444;
+  color: #ccc;
+}
+.cancel-button:hover {
+  background-color: #555;
+}
+
+/* Toggle Expand Button Style (Twitter-like - Dark Mode) */
+.toggle-expand-button {
+  display: inline-block; /* Or block if preferred */
+  margin-top: 10px; /* Space above the button */
+  padding: 4px 12px;
+  border: 1px solid #555; /* Darker border */
+  border-radius: 15px; /* Rounded corners like Twitter */
+  background-color: transparent; /* Transparent background */
+  color: #1da1f2; /* Keep Twitter blue */
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-align: center;
+}
+
+.toggle-expand-button:hover {
+  background-color: rgba(29, 161, 242, 0.15); /* Slightly more visible blue background on hover */
+}
+
+/* Drag and Drop Styles */
+.memo-item.dragging {
+  background-color: #1f3a4d; /* Dark blue background when dragging */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border-color: #1da1f2; /* Blue border */
+  opacity: 0.8; /* Slightly transparent */
+}
+
+/* Error Message */
+.error {
+  color: #fccaca; /* Light red text */
+  background-color: #7d2a2a; /* Dark red background */
+  padding: 10px 15px;
+  border: 1px solid #a02020;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Loading Message & Default Paragraph */
+p {
+  text-align: center;
+  color: #aaa; /* Lighter gray for general text */
+}

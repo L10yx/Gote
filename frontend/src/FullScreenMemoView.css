@@ -1,0 +1,49 @@
+.full-screen-memo-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  box-sizing: border-box; /* Include padding in dimensions */
+}
+
+.full-screen-content {
+  max-width: 80%; /* Limit content width */
+  max-height: 80%; /* Limit content height */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  background-color: #282c34; /* Slightly lighter background for content */
+  padding: 30px;
+  border-radius: 8px;
+  text-align: left; /* Align text to the left */
+}
+
+.full-screen-content h2 {
+  margin-top: 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #dc3545; /* Red color for close */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.close-button:hover {
+  background-color: #c82333;
+}
